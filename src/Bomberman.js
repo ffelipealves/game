@@ -1,33 +1,43 @@
-export default class Bomberman{
+export default class Bomberman {
+  constructor(x, y, tileSize, velocity, tileMap) {
+    this.x = x;
+    this.y = y;
+    this.tileSize = tileSize;
+    this.velocity = velocity;
+    this.tileMap = tileMap;
+    this.#loadBombermanImages();
+  }
 
-    constructor(x,y,tileSize,velocity,tileMap){
-        this.x=x;
-        this.y=y;
-        this.tileSize=tileSize;
-        this.velocity=velocity;
-        this.tileMap=tileMap;
-        this.#loadBombermanImages();
-    }
+  draw(ctx) {
+    ctx.drawImage(
+      this.bombermanImages[this.bombermanImageIndex],
+      this.x,
+      this.y,
+      this.tileSize,
+      this.tileSize
+    );
+  }
 
-    draw(ctx){
+  #loadBombermanImages() {
+    const bombermanImage1 = new Image();
+    bombermanImage1.src = "../images/soldier0.png";
 
-    }
-    #loadBombermanImages(){
-        const bombermanImage0 = new Image();
-        bombermanImage1.src="../images/soldier0.png";
-        const bombermanImage1 = new Image();
-        bombermanImage1.src="../images/soldier1.png";
-        const bombermanImage2 = new Image();
-        bombermanImage1.src="../images/soldier2.png";
-        const bombermanImage3 = new Image();
-        bombermanImage1.src="../images/soldier3.png";
+    const bombermanImage2 = new Image();
+    bombermanImage2.src = "../images/soldier1.png";
 
-        this.bombermanImages = [bombermanImage0,bombermanImage1,bombermanImage2,bombermanImage3]
+    const bombermanImage3 = new Image();
+    bombermanImage3.src = "../images/soldier2.png";
 
-        this.bombermanImageIndex = 0;
-    }
+    const bombermanImage4 = new Image();
+    bombermanImage4.src = "../images/soldier3.png";
 
+    this.bombermanImages = [
+      bombermanImage1,
+      bombermanImage2,
+      bombermanImage3,
+      bombermanImage4,
+    ];
+
+    this.bombermanImageIndex = 0;
+  }
 }
-
-
-//Bomberman(column * this.tileSize, row * this.tileSize, this.tileSize, velocity, this);
